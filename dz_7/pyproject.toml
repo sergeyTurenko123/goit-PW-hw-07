@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "dz-7"
+version = "0.1.0"
+description = ""
+authors = ["sergeyTurenko123 <sergej_petrovich_8484@ukr.net>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+alembic = "^1.13.1"
+sqlalchemy = "^2.0.30"
+base = "^0.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
