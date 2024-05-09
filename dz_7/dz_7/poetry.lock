@@ -20,16 +20,6 @@ typing-extensions = ">=4"
 tz = ["backports.zoneinfo"]
 
 [[package]]
-name = "base"
-version = "0.0.0"
-description = ""
-optional = false
-python-versions = "*"
-files = [
-    {file = "base-0.0.0.tar.gz", hash = "sha256:feb97f56b135b56e9c853c63b5440482aff2ae8a5964ec299c49c0788843391a"},
-]
-
-[[package]]
 name = "greenlet"
 version = "3.0.3"
 description = "Lightweight in-process concurrent programming"
@@ -289,4 +279,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "80a08c80d498b598353f616af75a308d13cf7e7e5c1c2d457452cefd44f51f42"
+content-hash = "8c56ba2b5c77f98dc29e3a2af3ee8342e674e4bca7c2c5b649effd1cc43e7a4c"
