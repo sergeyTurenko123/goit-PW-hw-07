@@ -44,11 +44,11 @@ def prepare_data(students, groups, teachers, subjects, evaluations): #-> tuple()
 
     for_teachers = []
     for teacher in teachers:
-        for_teachers.append((teacher, choice(subjects)))
+        for_teachers.append((teacher, ))
     
     for_subjects = []
     for subject in subjects:
-        for_subjects.append((subject, ))
+        for_subjects.append((subject, choice(teachers)))
     
     for_evaluations = []
     for student in students:
@@ -70,12 +70,12 @@ def insert_data_to_db(students, groups, teachers, subjects, evaluations) -> None
         sql_to_groups = """INSERT INTO groups(group_number) VALUES (?)"""
         cur.executemany(sql_to_groups, groups)
 
-        sql_to_teachers = """INSERT INTO teachers(teacher, teacher_id)
-                              VALUES (?, ?)"""
+        sql_to_teachers = """INSERT INTO teachers(teacher)
+                              VALUES (?)"""
         cur.executemany(sql_to_teachers, teachers)
         
-        sql_to_subjects = """INSERT INTO subjects(subject)
-                              VALUES (?)"""
+        sql_to_subjects = """INSERT INTO subjects(subject, subject_id)
+                              VALUES (?, ?)"""
         cur.executemany(sql_to_subjects, subjects)
 
         sql_to_evaluations = """INSERT INTO evaluations(student, subject, evaluation, created) VALUES (?, ?, ?, ?)"""

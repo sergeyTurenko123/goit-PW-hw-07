@@ -28,23 +28,23 @@ class Students(Base):
     id = Column(Integer, primary_key=True)
     student = Column(String(50), nullable=False)
     student_id = Column(Integer, ForeignKey(Groups.id, ondelete="CASCADE"))
-    
-class Subjects(Base):
-    __tablename__ = "subjects"
-    id = Column(Integer, primary_key=True)
-    subject = Column(String(50), nullable=False)
-    records = relationship("Teachers", cascade="all, delete", backref="subject")
 
 class Teachers(Base):
     __tablename__ = "teachers"
     id = Column(Integer, primary_key=True)
     teacher = Column(String(50), nullable=False)
-    teacher_id = Column(Integer, ForeignKey(Subjects.id, ondelete="CASCADE"))
+    records = relationship("Subjects", cascade="all, delete", backref="teachers")
+
+class Subjects(Base):
+    __tablename__ = "subjects"
+    id = Column(Integer, primary_key=True)
+    subject = Column(String(50), nullable=False)
+    subject_id = Column(Integer, ForeignKey(Teachers.id, ondelete="CASCADE"))
 
 class Evaluations(Base):
     __tablename__ = "evaluations"
     id = Column(Integer, primary_key=True)
-    student = Column(Integer, ForeignKey(Students.id, ondelete="CASCADE"))
+    student = Column(Integer, ForeignKey(Students.student, ondelete="CASCADE"))
     evaluation = Column(String(50), nullable=False)
-    subject = Column(Integer, ForeignKey(Subjects.id, ondelete="CASCADE"))
+    subject = Column(Integer, ForeignKey(Subjects.subject, ondelete="CASCADE"))
     created = Column(DateTime, default=datetime.now())
